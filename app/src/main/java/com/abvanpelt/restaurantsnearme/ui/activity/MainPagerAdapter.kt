@@ -2,8 +2,8 @@ package com.abvanpelt.restaurantsnearme.ui.activity
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.ListFragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.abvanpelt.restaurantsnearme.ui.fragment.ListFragment
 import com.abvanpelt.restaurantsnearme.ui.fragment.MapFragment
 
 private const val FRAGMENT_COUNT = 2
