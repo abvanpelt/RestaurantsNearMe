@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TabStyle" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabTextAppearance">@style/TabTextAppearance</item>
+        <item name="tabBackground">?attr/colorPrimary</item>
+        <item name="tabTextColor">@color/white_80p</item>
+        <item name="tabSelectedTextColor">?attr/colorOnPrimary</item>
+        <item name="tabIndicatorColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+</resources>
