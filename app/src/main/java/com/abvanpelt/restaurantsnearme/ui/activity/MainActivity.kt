@@ -55,12 +55,12 @@ class MainActivity : AppCompatActivity() {
      */
     private fun checkLocationPermission() {
         val request = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            // TODO forward the information to the ViewModel
+            viewModel.onPermissionResult(it)
         }
 
         when {
             hasLocationPermission() -> {
-                // TODO forward the information to the ViewModel
+                viewModel.onPermissionResult(true)
             }
             showPermissionExplanation() -> {
                 Snackbar

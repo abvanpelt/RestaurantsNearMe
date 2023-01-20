@@ -11,6 +11,6 @@ class MainViewModel @Inject constructor(
 ): ViewModel() {
 
     fun onPermissionResult(hasLocationPermission: Boolean) {
-        // TODO forward the information to the Repository
+        permissionsRepository.setLocationPermission(hasLocationPermission)
     }
 }
