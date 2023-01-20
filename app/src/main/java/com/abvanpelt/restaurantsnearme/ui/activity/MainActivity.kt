@@ -5,19 +5,24 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.abvanpelt.restaurantsnearme.R
 import com.abvanpelt.restaurantsnearme.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
 const val INDEX_FRAGMENT_MAP = 0
 const val INDEX_FRAGMENT_LIST = 1
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
