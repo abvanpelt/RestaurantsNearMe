@@ -10,6 +10,7 @@ import com.abvanpelt.restaurantsnearme.repository.PlacesRepository
 import com.abvanpelt.restaurantsnearme.ui.data.LatLong
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -37,6 +38,16 @@ class MainViewModel @Inject constructor(
                     )
 
                     locationLiveData.value = latLong.get()
+
+                    try {
+                        val places = placesRepository.getNearbyPlaces(latLong.get())
+                        Log.v(
+                            "RestaurantsNearMe",
+                            "Got nearby places: $places"
+                        )
+                    } catch (e: IOException) {
+                        Log.e("RestaurantsNearMe", "Failed to retrieve nearby places", e)
+                    }
                 } else {
                     Log.v("RestaurantsNearMe", "Failed to retrieve user location")
                 }
