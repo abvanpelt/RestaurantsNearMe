@@ -10,6 +10,7 @@ import com.abvanpelt.restaurantsnearme.repository.PlacesRepository
 import com.abvanpelt.restaurantsnearme.ui.data.LatLong
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject
 
@@ -32,24 +33,17 @@ class MainViewModel @Inject constructor(
             viewModelScope.launch {
                 val latLong = locationRepository.getLastLocation()
                 if (latLong.isPresent) {
-                    Log.v(
-                        "RestaurantsNearMe",
-                        "Got user location: ${latLong.get().latitude}, ${latLong.get().longitude}"
-                    )
-
+                    Timber.v("Got user location: ${latLong.get().latitude}, ${latLong.get().longitude}")
                     locationLiveData.value = latLong.get()
 
                     try {
                         val places = placesRepository.getNearbyPlaces(latLong.get())
-                        Log.v(
-                            "RestaurantsNearMe",
-                            "Got nearby places: $places"
-                        )
+                        Timber.v("Got nearby places: $places")
                     } catch (e: IOException) {
-                        Log.e("RestaurantsNearMe", "Failed to retrieve nearby places", e)
+                        Timber.e(e, "Failed to retrieve nearby places")
                     }
                 } else {
-                    Log.v("RestaurantsNearMe", "Failed to retrieve user location")
+                    Timber.e("Failed to retrieve user location")
                 }
             }
         }
