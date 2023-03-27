@@ -24,7 +24,6 @@ object NetworkModule {
             .baseUrl(BASE_URL)
             .client(OkHttpClient.Builder().build())
             .addConverterFactory(MoshiConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(PlacesApi::class.java)
     }
