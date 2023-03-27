@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abvanpelt.restaurantsnearme.repository.LocationRepository
+import com.abvanpelt.restaurantsnearme.repository.PlacesRepository
 import com.abvanpelt.restaurantsnearme.ui.data.LatLong
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val locationRepository: LocationRepository
+    private val locationRepository: LocationRepository,
+    private val placesRepository: PlacesRepository
 ) : ViewModel() {
 
     private val locationLiveData = MutableLiveData<LatLong>()
