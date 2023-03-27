@@ -45,6 +45,10 @@ class MapFragment : Fragment() {
                         .build()
                 )
         }
+
+        viewModel.places.observe(viewLifecycleOwner) { places ->
+            // TODO
+        }
     }
 
     override fun onDestroyView() {
