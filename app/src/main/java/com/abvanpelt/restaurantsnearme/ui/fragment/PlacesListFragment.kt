@@ -6,13 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.abvanpelt.restaurantsnearme.databinding.FragmentListBinding
 import com.abvanpelt.restaurantsnearme.ui.activity.MainViewModel
 
-class ListFragment : Fragment() {
+class PlacesListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
+    private val listAdapter = PlacesListAdapter()
 
     private val viewModel: MainViewModel by activityViewModels()
 
@@ -27,8 +29,13 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        with(binding.recyclerView) {
+            adapter = listAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+
         viewModel.places.observe(viewLifecycleOwner) { places ->
-            // TODO
+            listAdapter.submitList(places)
         }
     }
 

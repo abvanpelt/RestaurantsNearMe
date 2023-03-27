@@ -11,7 +11,7 @@ import com.abvanpelt.restaurantsnearme.ui.activity.MainViewModel
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 
-class MapFragment : Fragment() {
+class PlacesMapFragment : Fragment() {
 
     private var _binding: FragmentMapBinding? = null
     private val binding get() = _binding!!
